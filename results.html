@@ -8,29 +8,51 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Date Night Generator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+            <!-- add link to pre-made cheesy spotify playlist-->
+              <a class="nav-link" href="#">Spotify</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Search Filters
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Drinks</a>
+                <a class="dropdown-item" href="#">Meals</a>
+                <a class="dropdown-item" href="#">Music</a>
+                <a class="dropdown-item" href="#">Surprise Me!</a>
+              </div>
+            </li>
+            <li class="nav-item">
+</header>
+
+
 <body>
-    <!-- Sticky nav bar? -->
+   
 
     <!-- container -->
-    <div class="container-fluid">
-        <div class="row">
-            
-            <div class="col-4 justify-content- drink-col" id="drink">
-                <h1>Drink</h1>
-                <!-- fill drink content here -->
+    <div class="container">
+        <div class="row row-cols-3">
+            <div class="column"><h1>Drinks</h1>
+              <div id = "drink"></div>
             </div>
-            
-            
-            <div class="col-4 justify-content-center meal-col" id="meal">
-                <h1>Meal</h1>
-                <!-- fill meal content here  -->
+            <div class="column"><h1>Meal</h1>
+              <div id = "meal"></div>
             </div>
-            
-           
-            <div class="col-4 justify-content-center" id="music">
-                <h1>Music</h1>
-                <!-- fill music content here  -->
-            </div>
+            <div class="column">Music</div>
+          
         </div>
 
     

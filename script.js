@@ -5,6 +5,8 @@ var select = [false, false, false, false, false, false, false, false, false, fal
 var notInitialized = true; 
 var haveDrink = false;
 var haveMeal = false;
+var isRestart = false;
+var linkURL;
 
 
 function pullAPI(queryURL){
@@ -20,7 +22,8 @@ $.ajax({
 
     }).then(function(response){
     //console.log(response);
-    //console.log(select)
+    console.log(select)
+    console.log(isRestart);
         var array, index;
         //By ingredient
         if (select[0] === true){
@@ -42,7 +45,7 @@ $.ajax({
             // APPEND DRINK NAME + IMAGES + RECIPE HERE
             
             select[1] = false;
-            $(".drink-col").empty();
+            $("#drink").empty();
             getDrink();
         }
         //By category
@@ -65,7 +68,7 @@ $.ajax({
             //console.log(drinkID)
             // APPEND DRINK NAME + IMAGES + RECIPE HERE
             select[3] = false;
-            $(".drink-col").empty();
+            $("#drink").empty();
             getDrink(); 
         }
         //By Glass
@@ -83,19 +86,27 @@ $.ajax({
        else if (select[5] === true){
             
             array = response.drinks;
-            index = Math.floor(Math.random()*(array.length-1)) // 
+            index = Math.floor(Math.random()*(array.length-1)) 
             //console.log(index);
             drinkID = array[index].idDrink;
            // console.log(drinkID)
             // APPEND DRINK NAME + IMAGES + RECIPE HERE
             select[5] = false;
-            $(".drink-col").empty();
+            $("#drink").empty();
             getDrink(); 
         }
         else if (select[6] === true){
-            select[6] = false;
-            fillMI();
+                if(isRestart === false){
+                    
+                    fillMI();
+                }
+                else{
+                    isRestart = false; 
+                    console.log(isRestart);
+                }
+                select[6] = false;
         }
+
             
         else if (select[7] === true){
             
@@ -105,7 +116,7 @@ $.ajax({
             //console.log(drinkID)
             // APPEND DRINK NAME + IMAGES + RECIPE HERE
             select[7] = false;
-            $(".drink-col").empty();
+            $("#drink").empty();
             getDrink(); 
         }
 
@@ -129,7 +140,7 @@ $.ajax({
             // APPEND DRINK NAME + IMAGES + RECIPE HERE
             
             select[9] = false;
-            $(".meal-col").empty();
+            $("#meal").empty();
             getMeal();
         }
         //By category
@@ -152,7 +163,7 @@ $.ajax({
             //console.log(mealID)
             // APPEND DRINK NAME + IMAGES + RECIPE HERE
             select[11] = false;
-            $(".meal-col").empty();
+            $("#meal").empty();
             getMeal(); 
         }
         //By Area
@@ -170,13 +181,13 @@ $.ajax({
        else if (select[13] === true){
             
             array = response.meals;
-            index = Math.floor(Math.random()*(array.length-2)) // Last index is empty so subtract 2
+            index = Math.floor(Math.random()*(array.length-1))
             //console.log(index);
             mealID = array[index].idMeal;
             //console.log(mealID)
             // APPEND DRINK NAME + IMAGES + RECIPE HERE
             select[13] = false;
-            $(".meal-col").empty();
+            $("#meal").empty();
             getMeal(); 
         }
         else if (select[14] === true){
@@ -192,12 +203,18 @@ $.ajax({
             //console.log(meal)
             // APPEND DRINK NAME + IMAGES + RECIPE HERE
             select[15] = false;
-            $(".meal-col").empty();
+            $("#meal").empty();
             getMeal(); 
         }
         else if(haveDrink === true){
             displayDrink(response.drinks[0]);
+            haveDrink = false;
         }
+        else if(haveMeal === true){
+            displayMeal(response.meals[0]);
+            haveMeal = false;
+        }
+       
         
 
 
@@ -301,16 +318,39 @@ function getMeal(){
 
 function displayDrink(drinkObj){
     //console.log(drinkObj)
-    var dNameEl = $("<h2>").text(drinkObj.strDrink);
-    $("#drink").append(dNameEl);
-    var dImgEl = $("<img>").attr("src", drinkObj.strDrinkThumb);
+    var dImgEl = $("<img>").attr("src", drinkObj.strDrinkThumb).addClass("item-img");
     $("#drink").append(dImgEl);
-    var descEl = $("<p>").text(drinkObj.strSource);
+    var dNameEl = $("<h2>").text(drinkObj.strDrink).addClass("item-hdr");
+    $("#drink").append(dNameEl);
+    var x = 1;
+    var strIngredient = "strIngredient" + x;
+    var strMeasure = "strMeasure" + x;
+    //console.log(drinkObj[strIngredient])
+    //Add ingredients
+    while(drinkObj[strIngredient] !== null || drinkObj[strMeasure] !==null){ 
+        var ingEl = $("<p>").text(drinkObj[strMeasure] + " " + drinkObj[strIngredient]);
+        console.log(x)
+        $("#drink").append(ingEl);
+        x++;
+        strMeasure = "strMeasure" + x;
+        strIngredient = "strIngredient" + x;
+    
+    }
+    var descEl = $("<p>").text("Instructions: " + drinkObj.strInstructions);
     $("#drink").append(descEl);
+    $("#drink").append($("<button>").attr("id", "drink-restart").addClass("btn restart-btn").text("Pick another"));
 
 }
 function displayMeal(mealObj){
-    var name = $("<h2").text(mealObj.strMeal)
+    var mImgEl = $("<img>").attr("src", mealObj.strMealThumb).addClass("item-img");
+    $("#meal").append(mImgEl);
+    var mNameEl = $("<h2>").text(mealObj.strMeal).addClass("item-hdr");
+    $("#meal").append(mNameEl);
+    linkURL = mealObj.strSource;
+    var mdescEl = $("<a>").text("Click here for scrumptious recipe!").attr({id: "meal-link", href: linkURL, style: "display:block"});
+    //console.log(mealObj.strSource);
+    $("#meal").append(mdescEl);
+    $("#meal").append($("<button>").attr("id", "meal-restart").addClass("btn restart-btn").text("Pick another"));
 
 }
 
@@ -322,7 +362,7 @@ fillDI();
 
 //Event listener for dropdown list selection
 
-$(".container-fluid").change((function(event){
+$(".container").change((function(event){
     event.preventDefault();
     var item;
     if(event.target.matches("#dI-sel"))
@@ -378,13 +418,13 @@ $(".container-fluid").change((function(event){
 }))
 
 // Drink random
-$(".container-fluid").on("click", (function(event){
+$(".container").on("click", (function(event){
     event.preventDefault();
     if(event.target.matches("#dR-btn"))
     {
         select[7] = true; 
         queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
-        console.log(select);
+        //console.log(select);
         pullAPI(queryURL);
         
 
@@ -392,13 +432,43 @@ $(".container-fluid").on("click", (function(event){
 }))
 
 // Meal Random
-$(".container-fluid").on("click", (function(event){
+$(".container").on("click", (function(event){
     event.preventDefault();
     if(event.target.matches("#mR-btn"))
     {
         select[15] = true; 
         queryURL = "https://www.themealdb.com/api/json/v1/1/random.php";
         pullAPI(queryURL);
+
+    }
+}))
+
+$(".container").on("click", (function(event){
+    event.preventDefault();
+    if(event.target.matches("#meal-link"))
+    {
+        window.open(linkURL, '_blank');
+
+    }
+}))
+
+$(".container").on("click", (function(event){
+    event.preventDefault();
+    if(event.target.matches("#drink-restart"))
+    {
+        $("#drink").empty();
+        isRestart = true;
+        fillDI();
+        
+
+    }
+}))
+$(".container").on("click", (function(event){
+    event.preventDefault();
+    if(event.target.matches("#meal-restart"))
+    {
+        $("#meal").empty();
+        fillMI();
 
     }
 }))
