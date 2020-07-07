@@ -6,34 +6,28 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container-fluid m-0 p-0">
+  <header>
     <header>
-      
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="index.html">Date Night Generator</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                <!-- add link to pre-made cheesy spotify playlist-->
-                <a class="nav-link" href="https://open.spotify.com/playlist/703NFL30mUxBTp3Ef3WgVH" target = "_blank">Spotify</a>
-                </li>
-                <li class="nav-item">
-                    <!-- add link to favorites page-->
-                      <a class="nav-link" href = "favorites.html" id = "favorite-link">Favorites</a>
-                </li>
-                  
-                  </li>
-                </ul>
-              </div>
-            </nav>
-    </header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Date Night Generator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="index.html">Home</a>
+            <a class="nav-item nav-link" href="results.html">Generate</a>
+            <a class="nav-item nav-link active" href="favorites.html">Favorites<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="https://open.spotify.com/playlist/703NFL30mUxBTp3Ef3WgVH" target = "_blank">Spotify</a>
+          </div>
+        </div>
+      </nav>
+  </header>
 
 
 
@@ -41,17 +35,26 @@
 
         <!-- container -->
         
-            <div class="row row-cols-3 content-area m-4 pb-5">
-                <div class="column px-5"><h1 class = "col-hdr">Drinks</h1>
-                  <div id = "fav-drink"></div>
-                </div>
-                <div class="column px-5"><h1 class = "col-hdr">Meal</h1>
-                  <div id = "fav-meal"></div>
-                </div>
-                <div class= "column px-5"><h1 class = "col-hdr">Music</h1>
-                  <div id = "fav-music"></div>
-                </div> 
+      <div class="row no-gutters p-2">
+          <div class="col-lg-4 col-12 column p-lg-3 p-2">
+            <div class = "wrap-div content-area pb-3">
+              <h1 class = "col-hdr">Drinks</h1>
+              <div id = "fav-drink"></div>
             </div>
+          </div>
+          <div class="col-lg-4 col-12 column p-lg-3 p-2">
+            <div class = "wrap-div content-area pb-3">
+              <h1 class = "col-hdr">Meal</h1>
+              <div id = "fav-meal"></div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-12 column p-lg-3 p-2">
+            <div class = "wrap-div content-area pb-3">
+              <h1 class = "col-hdr">Music</h1>
+              <div id = "fav-music"></div>
+            </div>
+        </div>
+      </div>
 
         
     </div>
