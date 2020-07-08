@@ -118,11 +118,11 @@ p{
     
 
 }
-.row::after{
+/* .row::after{
     content: "";
     display: flex;
     clear: both;
-}
+} */
 
 .item-img{
     width: 50%;
