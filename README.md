@@ -11,6 +11,9 @@ Drinks, Meals, Music, random Spotify playlist, and Random.
 On the landing page, the user will select the link that will take them to the results page.
 The results page will allow the user to select the Drink & Meal with different catergories and based on the user input, music will populate the next area.
 
+## Deployment
+[Click here](https://cnmiller127.github.io/DinnerDateGenerator/) to interact with the deployed app.
+
 ## Preview
 
 ![Screenshot](Images/date.png)
