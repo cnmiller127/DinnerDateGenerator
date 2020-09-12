@@ -3,7 +3,7 @@
 ## Contributors
 Andi Virgen, Marisa Diaz, Christian Miller
 
-## Origin Repo
+## Team Repository
 [Click here](https://github.com/andrealejandra/Project_1) for link to team project repository.
 
 ## Story
