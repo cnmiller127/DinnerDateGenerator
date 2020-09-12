@@ -9,5 +9,9 @@ Upon landing on the home page, the user will see that the nav bar with the name 
 Drinks, Meals, Music, random Spotify playlist, and Random. 
 
 On the landing page, the user will select the link that will take them to the results page.
-The results page will allow the user to select the Drink & Meal with different catergories and based on the user input, music will populate the next area. 
+The results page will allow the user to select the Drink & Meal with different catergories and based on the user input, music will populate the next area.
+
+## Preview
+
+![Screenshot](Images/date.png)
 
