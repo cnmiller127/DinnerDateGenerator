@@ -1,4 +1,12 @@
 # Virtual Date Night
+
+## Contributors
+Andi Virgen, Marisa Diaz, Christian Miller
+
+## Origin Repo
+[Click here](https://github.com/andrealejandra/Project_1) for link to team project repository.
+
+## Story
 Scenario: You're in isolation, like a good person, but you are also a single pringle, so what do you do? Go on virtual dates in order to try to shed that single pringle status.
 However, you have a big dilemma. What exactly do you want to do for your virtual date night? What drink do you want? What kind of meal do you want? What kind of mood do you want? 
 You want to make a lasting impression through the screen and yet your stress inhibits your creativiy. So, what now?
